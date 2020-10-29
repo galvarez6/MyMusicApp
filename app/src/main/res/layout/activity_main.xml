@@ -25,7 +25,7 @@
         android:ems="10"
         android:hint="Enter a URL"
         android:inputType="textPersonName"
-        android:text="http://www.cs.utep.edu/cheon/cs4330/sample.mp3"
+        android:text="http://www.cs.utep.edu/cheon/cs4330/sample2.mp3"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView"

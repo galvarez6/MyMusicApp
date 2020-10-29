@@ -45,14 +45,33 @@ public class MainActivity extends AppCompatActivity {
                 //--
                 //-- TODO: WRITE YOUR CODE HERE
                 //--
-                showProgressAsyncTask(player);
-                //showProgressThread(player);
+                //showProgressAsyncTask(player);
+                showProgressThread(player);
                 //showProgressHandler(player);
                 //--
             } else {
                 toast("Failed!");
             }
         }
+    }
+
+    private void showProgressThread(MediaPlayer player) {
+        progressBar.setMax(player.getDuration());
+        progressBar.setProgress(0);
+        progressBar.setVisibility(View.VISIBLE);
+        new Thread (new Runnable(){
+            public void run(){
+                while(player.isPlaying()){
+                    progressBar.setProgress(player.getCurrentPosition());
+                    Log.d("SECONDS",":"+ player.getCurrentPosition());
+                }//end of while
+                progressBar.setProgress(0);
+                progressBar.setVisibility(View.INVISIBLE);
+                runOnUiThread(()->{
+                    toast("Finished Playing");
+                });
+            }
+        }).start();
     }
 
     private void showProgressAsyncTask(MediaPlayer player) {
